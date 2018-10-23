@@ -1,4 +1,4 @@
-import Vertice
+#import Vertice
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
@@ -22,70 +22,42 @@ def build():
 
 	print(conteudoArq)
 
-	vertices = []	
-	verticeInicial = Vertice.Vertice('-1') #só pra poder entrar nos fors
-	vertices.append(verticeInicial)
+	vertices = []
+	nConexoes = []
 
 	for ele in conteudoArq:
 		auxList = ele.split(' ')
 		
-		nomeVertice1 = auxList[1]
-		nomeVertice2 = auxList[2]
-		nomeVertice2 = nomeVertice2[:-1]
+		vertice1 = auxList[1]
+		vertice2 = str(int(auxList[2])) #retira \n
 
-		print(nomeVertice1)
-		print(nomeVertice2)
-
-		vInList = False
-
-		for v in vertices:
-			
-			if nomeVertice1 == v.getNome():
-				#v.incNConexoes()
-				vInList = True
-				break
-			
-			else:
-				#vertice = Vertice.Vertice(nomeVertice1)
-				#vertices.append(vertice)
-				vInList = False
-
-		if vInList:
-			v.incNConexoes()
-
-		else:
-			vertice = Vertice.Vertice(nomeVertice1)
-			vertices.append(vertice)
+		print(vertice1)
+		print(vertice2)
 
 		vInList = False
 
-		for v in vertices:
-			
-			if nomeVertice2 == v.getNome():
-				#v.incNConexoes()
-				vInList = True
-				break
-			
-			else:
-				#vertice = Vertice.Vertice(nomeVertice2)
-				#vertices.append(vertice)
-				vInList = False
-
-		if vInList:
-			v.incNConexoes()
+		if vertice1 in vertices:
+			indice = vertices.index(vertice1)
+			nConexoes[indice] += 1
 
 		else:
-			vertice = Vertice.Vertice(nomeVertice2)
-			vertices.append(vertice)
+			vertices.append(vertice1)
+			nConexoes.append(1)
 
-		print(vertices)
+		if vertice2 in vertices:
+			indice = vertices.index(vertice2)
+			nConexoes[indice] += 1
 
-	print(vertices[0])
-	print(type(vertices[0]))
+		else:
+			vertices.append(vertice2)
+			nConexoes.append(1)
+		
+		#print(vertices)
 
-	del vertices[0] #removendo o -1
+	#print(vertices[0])
+	#print(type(vertices[0]))
 
-	for v in vertices:
-		print('Nome: ', v.getNome())
-		print('Nome: ', v.getNConexoes())
+	for i in range(0, len(vertices)):
+		print('Vértice:', vertices[i])
+		print('Num Conexões:', nConexoes[i])
 		print('\n')
