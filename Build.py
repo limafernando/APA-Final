@@ -18,7 +18,7 @@ def readFile():
 	return conteudoArq
 
 def graphRep(conteudoArq):
-	print(conteudoArq)
+	#print(conteudoArq)
 
 	vertices = []
 	nConexoes = []
@@ -32,8 +32,8 @@ def graphRep(conteudoArq):
 		vertice1 = auxList[1]
 		vertice2 = str(int(auxList[2])) #retira \n
 
-		print(vertice1)
-		print(vertice2)
+		#print(vertice1)
+		#print(vertice2)
 
 		vInList = False
 
@@ -69,14 +69,15 @@ def graphRep(conteudoArq):
 
 	#print(vertices[0])
 	#print(type(vertices[0]))
-
+	'''
+	só para printar
 	for i in range(0, len(vertices)):
 		print('Vértice:', vertices[i])
 		print('Num Conexões:', nConexoes[i])
 		print('\n')
-
+	'''
 	#print(arestas)
-
+	
 	return vertices, nConexoes, adjacentes
 
 
@@ -90,14 +91,14 @@ def getColourSet():
 def solution0(vertices, nConexoes, adjacentes):
 	colourSet = getColourSet()
 
-	print(colourSet)
+	#print(colourSet)
 
 	cores = ['']*len(vertices)
 
 	pair = zip(nConexoes, vertices)
 	ordemVertices = [x for y, x in sorted(pair, reverse = True)]
-	print('\n')
-	print(ordemVertices)
+	#print('\n')
+	#print(ordemVertices)
 
 	ordemIndices = []
 
@@ -125,26 +126,26 @@ def solution0(vertices, nConexoes, adjacentes):
 	return cores
 
 def kCores(cores):
-	usedColour = []
+	coresUsadas = []
 	k = 0
 	for cor in cores:
-		if cor not in usedColour:
+		if cor not in coresUsadas:
 			k += 1
-			usedColour.append(cor)
-	return k, usedColour
+			coresUsadas.append(cor)
+	return k, coresUsadas
 
 def build():
 	conteudoArq = readFile()
 
 	vertices, nConexoes, adjacentes = graphRep(conteudoArq)
 
-	print(adjacentes)
+	#print(adjacentes)
 
 	cores = solution0(vertices, nConexoes, adjacentes)
 
-	print(cores)
+	#print(cores)
 
-	k, usedColour = kCores(cores)
-	print(k)
+	k, coresUsadas = kCores(cores)
+	#print(k)
 
-	return vertices, adjacentes, cores, k, usedColour
+	return vertices, adjacentes, cores, k, coresUsadas
