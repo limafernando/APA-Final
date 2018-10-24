@@ -17,13 +17,50 @@ def removeBucket(vertices, adjacentes, cores, k, usedColour):
 	print(usedColour)
 	print(buckets)
 
+	novasCores = [cores*1 for i in range(k)]
+	print(adjacentes[vertices.index('9')])
 	#tentar remover algum bucket
 	for i in range(0, k):
-		auxList = cores.copy()
-		auxList.remove(usedColour[i]) #remove a cor que vamos tentar remover da solução
+		auxColourList = usedColour.copy()
+		auxColourList.remove(usedColour[i]) #remove a cor que vamos tentar remover da solução
 		bucket = buckets[i]
+		print('usado:',usedColour[i])
+		print('aux:',auxColourList)
 
 		for vertice in bucket:
+
 			#tenta mudar a cor
 			#semelhante a construção
-			pass	
+
+			indice = vertices.index(vertice)
+
+			#print(novasCores)
+			print(vertice)
+			for c in auxColourList:
+				print('c: ', c)
+				print(adjacentes[indice])
+				for adj in adjacentes[indice]:
+					
+					indiceAdj = vertices.index(adj)
+
+					if c == cores[indiceAdj]:
+						canUse = False
+						break
+						
+					else:
+						canUse = True
+
+				if canUse:
+					print('sim')
+					novasCores[i][indice] = c
+					'''if i ==3 and indice == 9:
+						print(i, indice)
+						print(novasCores[i][indice])'''
+					break
+				else:
+					print('não')
+					
+
+	print("cores:", cores)
+	print('novasCores:', novasCores)
+	print('\n')
