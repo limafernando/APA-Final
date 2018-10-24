@@ -124,6 +124,14 @@ def solution0(vertices, nConexoes, adjacentes):
 
 	return cores
 
+def kCores(cores):
+	usedColour = []
+	k = 0
+	for cor in cores:
+		if cor not in usedColour:
+			k += 1
+			usedColour.append(cor)
+	return k, usedColour
 
 def build():
 	conteudoArq = readFile()
@@ -135,3 +143,8 @@ def build():
 	cores = solution0(vertices, nConexoes, adjacentes)
 
 	print(cores)
+
+	k, usedColour = kCores(cores)
+	print(k)
+
+	return vertices, adjacentes, cores, k, usedColour
