@@ -9,7 +9,7 @@ def readFile():
 	#print(caminhoArq)
 	arq = open(caminhoArq, 'r')
 	conteudoArq = arq.readlines()
-	#print(conteudoArq)
+	#print(conteudoArq)	
 	arq.close()
 	#Para selecionar o arquivo por GUI>
 	
@@ -24,7 +24,7 @@ def graphRep(conteudoArq):
 	nConexoes = []
 	adjacentes = [[]] #começa com 1 elemento/lista vazia que vai ser eliminada depois da primeira iteração
 
-	cont = 1
+	#cont = 1
 
 	for ele in conteudoArq:
 		auxList = ele.split(' ')
@@ -32,8 +32,8 @@ def graphRep(conteudoArq):
 		vertice1 = auxList[1]
 		vertice2 = str(int(auxList[2])) #retira \n
 
-		#print(vertice1)
-		#print(vertice2)
+		#print('v1:',vertice1)
+		#print('v2:',vertice2)
 
 		vInList = False
 
@@ -47,7 +47,9 @@ def graphRep(conteudoArq):
 			vertices.append(vertice1)
 			nConexoes.append(1)
 
-			adjacentes.append(list(vertice2))
+			l = [vertice2]
+			adjacentes.append(l)
+
 
 		if vertice2 in vertices:
 			indice = vertices.index(vertice2)
@@ -59,14 +61,13 @@ def graphRep(conteudoArq):
 			vertices.append(vertice2)
 			nConexoes.append(1)
 
-			adjacentes.append(list(vertice1))
+			l = [vertice1]
+			adjacentes.append(l)
 
-		if cont == 1: #pra remover o primeiro elemento desnecessário
-			adjacentes.pop(0)
-			cont -= 1
+	#pra remover o primeiro elemento desnecessário
+	adjacentes.pop(0)
 		
-		#print(vertices)
-
+	#print(vertices)
 	#print(vertices[0])
 	#print(type(vertices[0]))
 	'''
@@ -77,14 +78,19 @@ def graphRep(conteudoArq):
 		print('\n')
 	'''
 	#print(arestas)
+
+	for i in range(0, len(adjacentes)):
+		if '0' in adjacentes[i]:
+			print(adjacentes[i])
+			print(vertices[i])
 	
 	return vertices, nConexoes, adjacentes
 
 
 def getColourSet():
-	#colourDict = ['red','green','blue','yellow','black','gray','pink','violet']
+	#colourDict = ['red','green','blue','yellow','black','gray','pink','violet', 'orange', 'purple', 'silver', 'indigo', 'gold', 'bronze', 'brown', 'jade', 'sepia']
 
-	colourSet = ['R','G','B','Y','BK','GR','P','V']
+	colourSet = ['R','G','B','Y','BK','GR','P','V', 'O', 'PP', 'S', 'I', 'GO', 'BZ', 'BN', 'J', 'S']
 
 	return colourSet
 
