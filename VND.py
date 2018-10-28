@@ -1,3 +1,16 @@
+def grasp(vertices, adjacentes, cores, k, coresUsadas):
+	while True:
+		coresA = cores.copy()
+
+		cores, k, coresUsadas = removeBucket(vertices, adjacentes, cores, k, coresUsadas)
+
+		#print(coresA)
+		#print(cores)
+
+		if(coresA == cores):
+			break
+	return cores, k, coresUsadas
+
 def removeBucket(vertices, adjacentes, cores, k, coresUsadas):
 	
 	buckets = [[0]*1 for i in range(k)] #lista com k listas, cada uma para uma cor

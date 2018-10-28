@@ -8,7 +8,7 @@ def main():
 
 	coresA, kA, coresUsadasA = cores, k, coresUsadas
 
-	cores, k, coresUsadas = vnd.removeBucket(vertices, adjacentes, cores, k, coresUsadas)
+	cores, k, coresUsadas = vnd.grasp(vertices, adjacentes, cores, k, coresUsadas)
 
 	print('Solução Incial:', coresA, kA, coresUsadasA)
 	print('Solução vizinhança (buckets):', cores, k, coresUsadas)
