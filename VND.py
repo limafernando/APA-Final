@@ -1,3 +1,5 @@
+import math
+
 def vnd(vertices, adjacentes, cores, k, coresUsadas):
 	while True:
 		coresA = cores.copy()
@@ -72,17 +74,17 @@ def removeBucket(vertices, adjacentes, cores, k, coresUsadas):
 		novasCoresUsadas.append(usado)
 		novosN.append(n)
 	
-	pair = zip(novosN, novasCoresUsadas)
-	ordenado = [x for y, x in sorted(pair)]
-	
-	melhorCores = ordenado[0]
+	menor = math.inf
+	menorInd = math.inf
+	for i in range(0, len(novosN)):
+		if novosN[i] < menor:
+			menorInd = i
+			menor = novosN[i]
+
+	melhorCores = novasCoresUsadas[menorInd]
 
 	melhorK = len(melhorCores)
-
-	for i in range(0,len(solucoes)):
-		if novasCoresUsadas[i] == melhorCores:
-			break
-
-	melhorSolucao = solucoes[i]
+	
+	melhorSolucao = solucoes[menorInd]
 
 	return melhorSolucao, melhorK, melhorCores
