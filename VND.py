@@ -2,11 +2,11 @@ import math
 
 def vnd(vertices, adjacentes, cores, k, coresUsadas):
 	while True:
-		coresA = cores.copy()
+		kA = k
 
 		cores, k, coresUsadas = removeBucket(vertices, adjacentes, cores, k, coresUsadas)
 
-		if(coresA == cores):
+		if(kA == k):
 			break
 	
 	pair = zip(vertices, cores)

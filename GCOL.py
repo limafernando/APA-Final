@@ -4,7 +4,7 @@ import Build as bld
 import VND as vnd
 
 def main():
-	graspMAX = 1000 # Numero de iteracoes do Grasp
+	graspMAX = 20 # Numero de iteracoes do Grasp
 	alfa = 1 # Grau de aleatoriedade
 
 	# Solucao inicial
