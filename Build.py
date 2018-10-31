@@ -87,10 +87,10 @@ def solution0(vertices, nConexoes, adjacentes, alfa):
 
 			if canUse:
 				aux.append(c)
-		if(len(aux) > 0):
-			random_index = randint(0, int(alfa*len(aux)))
-			if(random_index == len(aux)):
-				random_index -= 1
+
+		tam = len(aux)
+		if(tam > 0):
+			random_index = randint(0, int(alfa*(tam-1)))
 			cores[i] = aux[random_index]
 	return cores
 
